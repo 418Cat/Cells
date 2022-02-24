@@ -92,7 +92,9 @@ class Frame{
 	public void allPanel() {
 		for (ArrayList<Panel> p1 : panels) {
 			for(Panel p2 : p1) {
-				panel(p2);
+				if(p2.img[0] != null) {
+					panel(p2);
+				}
 			}
 		}
 		System.out.println("\nWhole grid");
