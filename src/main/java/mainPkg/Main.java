@@ -49,9 +49,11 @@ public class Main {
 				frame.initialize(new int[] {Integer.parseInt(arg.allArgs.get("size").split(",")[0]), Integer.parseInt(arg.allArgs.get("size").split(",")[1])}, (int)(reader.getNumImages(true)/3), new int[] {0, 0});
 				for(ArrayList<Panel> arrP : frame.panels) {
 					for(Panel p : arrP) {
-						p.img[0] = (BufferedImage)reader.read(p.pos*3);
-						p.img[1] = (BufferedImage)reader.read((p.pos*3)+1);
-						p.img[2] = (BufferedImage)reader.read((p.pos*3)+2);
+						if(p.pos*3+2 < imgNb) {
+							p.img[0] = (BufferedImage)reader.read(p.pos*3);
+							p.img[1] = (BufferedImage)reader.read((p.pos*3)+1);
+							p.img[2] = (BufferedImage)reader.read((p.pos*3)+2);
+						}
 					}
 				}
 			} catch(Exception e) {
